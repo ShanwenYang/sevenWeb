@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/css/swiper.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./dist/js/swiper.min.js"></script>
+    <script src="./js/swiper.animate1.0.3.min.js"></script>
+    <script src="./js/jquery-1.11.2.min.js"></script>
+    <title>产品宣传界面</title>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide pp1">
+                <div class="page-cover">
+                    <h1 class="ani title-1" swiper-animate-effect="animate__animated animate__backInDown">西南交通大学<br>春天的美景</h1>
+                    <img class="ani p1" swiper-animate-effect="animate__animated animate__backInLeft" swiper-animate-delay="0.5s" src="./images//a_11.jpg" alt="">
+                    <img class="ani p1" swiper-animate-effect="animate__animated animate__backInRight" swiper-animate-delay="0.5s" src="./images//a_13.jpg" alt="">
+                    <img class="ani p1" swiper-animate-effect="animate__animated animate__backInLeft" swiper-animate-delay="1s" src="./images//a_16.jpg" alt="">
+                    <img class="ani p1" swiper-animate-effect="animate__animated animate__backInRight" swiper-animate-delay="1s" src="./images//a_18.jpg" alt="">
+                    <img class="ani p1" swiper-animate-effect="animate__animated animate__backInLeft" swiper-animate-delay="1.5s" src="./images//a_21.jpg" alt="">
+                    <img class="ani p1" swiper-animate-effect="animate__animated animate__backInRight" swiper-animate-delay="1.5s" src="./images//a_23.jpg" alt="">
+                    <div class="ani button-1" swiper-animate-effect="animate__animated animate__backInUp" swiper-animate-delay="2s">报考西南交大</div>
+                </div>
+            </div>
+            <div class="swiper-slide p2">
+                <div class="page-cover">
+                    <h1 class="ani title-1" swiper-animate-effect="animate__animated animate__backInDown">西南交通大学<br>锐智鉴赏</h1>
+                    <video class="video" controls="controls" autoplay="autoplay" type="video/mp4" src="./video/1.mp4"></video>
+                    <div class="ani button-1" swiper-animate-effect="animate__animated animate__backInUp" swiper-animate-delay="2s">报考西南交大</div>
+                </div>
+            </div>
+            <div class="swiper-slide p3">
+                <div class="page-cover">
+                    <h1 class="ani title-1" swiper-animate-effect="animate__animated animate__backInDown">西南交通大学<br>锐智鉴赏</h1>
+                    <video class="video" controls="controls" autoplay="autoplay" type="video/mp4" src="./video/2.mp4"></video>
+                    <div class="ani button-1" swiper-animate-effect="animate__animated animate__backInUp" swiper-animate-delay="2s">报考西南交大</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 翻页提示箭头 -->
+    <div id="nextbtn">
+        <img class="fadeInUp" src="./images/arrow.png" alt="">
+    </div>
+
+
+    <!-- 音乐图标 -->
+    <img id="music_icon" src="./images/music-icon.png" alt="">
+
+    <!-- 音乐标签 -->
+    <audio src="./audio/music.mp3" id="audio"></audio>
+
+    <!-- 引入音乐播放的js，要在audio下面引入 -->
+    <script src="./js/playmusic.js"></script>
+    <script>
+        let videos = document.getElementsByTagName('video');
+
+        function pauseAll() {
+            for (var j = videos.length - 1; j >= 0; j--) {
+                videos[i].pause();
+            }
+        }
+
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical',
+            on: {
+                init: function() {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    swiperAnimate(this); //初始化完成开始动画
+                },
+                slideChangeTransitionEnd: function() {
+                    pauseAll();
+                    swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                    //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+                }
+            }
+        })
+
+        // 轮播视频
+    </script>
+</body>
+
+</html>
